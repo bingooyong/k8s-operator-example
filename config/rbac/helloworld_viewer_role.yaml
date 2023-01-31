@@ -1,0 +1,27 @@
+# permissions for end users to view helloworlds.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: helloworld-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: k8s-operator-example
+    app.kubernetes.io/part-of: k8s-operator-example
+    app.kubernetes.io/managed-by: kustomize
+  name: helloworld-viewer-role
+rules:
+- apiGroups:
+  - example.github.com
+  resources:
+  - helloworlds
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - example.github.com
+  resources:
+  - helloworlds/status
+  verbs:
+  - get
